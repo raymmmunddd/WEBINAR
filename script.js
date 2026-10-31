@@ -60,8 +60,14 @@ const sectionObserver = new IntersectionObserver((entries) => {
     navLinks.forEach((a) => {
       const on = a.getAttribute("href") === "#" + entry.target.id;
       a.classList.toggle("active", on);
-      // keep the active link visible in the scrollable nav on phones
-      if (on) a.scrollIntoView({ block: "nearest", inline: "nearest" });
+      // Keep the active link visible in the scrollable nav on phones.
+      // We scroll ONLY the nav bar sideways (never the page), so the
+      // page never jumps while the visitor is scrolling.
+      if (on) {
+        const nav = a.parentElement;
+        const left = a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2;
+        nav.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+      }
     });
   });
 }, { rootMargin: "-45% 0px -50% 0px" });
@@ -528,7 +534,6 @@ function answer(choice) {
     box.classList.remove("shake"); void box.offsetWidth; box.classList.add("shake");
   }
   renderDots();
-  $("#quizNext").focus({ preventScroll: true });
 }
 
 function endQuiz() {
