@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page setup: character set, mobile scaling, and the tab title -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Coding &amp; AI Acceleration · Gordon College</title>
+  <meta name="description" content="Session 2 recap: HTML, CSS, JavaScript, deployment, and prompting AI the right way.">
+  <!-- Our styles live in a separate file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER + STICKY NAV =====
+       <header> holds the site's top bar. It stays stuck to the top while you scroll. -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home"><span class="brand-tag">&lt;/&gt;</span> Session 2</a>
+
+      <!-- On phones, this button opens and closes the menu -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="menu-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <!-- Each link points to a section id below. Clicking scrolls there. -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#basics">Basics</a></li>
+        <li><a href="#tags">Tags</a></li>
+        <li><a href="#sites">Sites</a></li>
+        <li><a href="#deploy">Deploy</a></li>
+        <li><a href="#ai-era">AI Era</a></li>
+        <li><a href="#prompting">Prompting</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+      </ul>
+
+      <!-- Dark / light mode switch -->
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== 1. HERO ===== -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <p class="sticker sticker-sun reveal">Gordon College · Session 2</p>
+        <h1 class="hero-title reveal">
+          Modern Coding
+          <span class="hero-amp">&amp;</span>
+          <span class="hero-hl">AI Acceleration</span>
+        </h1>
+        <p class="hero-sub reveal">Build for the web, ship it live, and learn to talk to AI like a pro.</p>
+
+        <!-- Presenters -->
+        <ul class="presenters reveal" aria-label="Presenters">
+          <li class="presenter"><span class="avatar" aria-hidden="true">AC</span>Caluscos, Aeryun Clay</li>
+          <li class="presenter"><span class="avatar avatar-mint" aria-hidden="true">RL</span>Caolboy, Raymund Leean</li>
+        </ul>
+
+        <!-- A normal link styled as a button. The browser scrolls when it's clicked. -->
+        <a class="btn btn-primary reveal" href="#basics">Start Learning <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <!-- Floating code "stickers" just for decoration -->
+      <div class="hero-floaters" aria-hidden="true">
+        <span class="floater f1">&lt;p&gt;</span>
+        <span class="floater f2">{ }</span>
+        <span class="floater f3">( ) =&gt;</span>
+        <span class="floater f4">&lt;nav&gt;</span>
+        <span class="floater f5">#id</span>
+      </div>
+    </section>
+
+    <!-- ===== 2. HTML, CSS & JAVASCRIPT ===== -->
+    <section id="basics" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">02 · The big three</p>
+          <h2>HTML, CSS &amp; JavaScript</h2>
+          <p class="lede">Every website is built from these three. Tap a card to flip it.</p>
+        </header>
+
+        <!-- Flip cards: each is a button so it works with mouse, touch, and keyboard -->
+        <div class="flip-grid">
+          <button class="flip-card reveal" type="button" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="flip-face flip-front c-coral">
+                <span class="flip-lang">HTML</span>
+                <span class="flip-word">Structure</span>
+                <span class="flip-hint">tap to flip ↻</span>
+              </span>
+              <span class="flip-face flip-back">
+                <span class="flip-lang">HTML</span>
+                <span class="flip-text">Gives a page its structure and content: headings, paragraphs, images, and links.</span>
+                <span class="flip-think">Think: the skeleton</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="flip-card reveal" type="button" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="flip-face flip-front c-sky">
+                <span class="flip-lang">CSS</span>
+                <span class="flip-word">Style</span>
+                <span class="flip-hint">tap to flip ↻</span>
+              </span>
+              <span class="flip-face flip-back">
+                <span class="flip-lang">CSS</span>
+                <span class="flip-text">Controls how a page looks: colors, fonts, spacing, and layout.</span>
+                <span class="flip-think">Think: the outfit</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="flip-card reveal" type="button" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="flip-face flip-front c-mint">
+                <span class="flip-lang">JavaScript</span>
+                <span class="flip-word">Behavior</span>
+                <span class="flip-hint">tap to flip ↻</span>
+              </span>
+              <span class="flip-face flip-back">
+                <span class="flip-lang">JavaScript</span>
+                <span class="flip-text">Makes a page interactive: buttons, pop-ups, animations, and forms.</span>
+                <span class="flip-think">Think: the moves</span>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Mini live playground -->
+        <div class="playground reveal">
+          <div class="pg-head">
+            <h3>Mini playground</h3>
+            <p>Type HTML on the left. The preview updates as you type.</p>
+          </div>
+
+          <!-- Quick buttons that add a snippet to the editor -->
+          <div class="pg-snippets" role="group" aria-label="Insert a snippet">
+            <button class="chip" type="button" data-snippet="&lt;h2&gt;A new heading&lt;/h2&gt;">+ heading</button>
+            <button class="chip" type="button" data-snippet="&lt;a href=&quot;https://developer.mozilla.org&quot;&gt;A link to MDN&lt;/a&gt;">+ link</button>
+            <button class="chip" type="button" data-snippet="&lt;ol&gt;&#10;  &lt;li&gt;First&lt;/li&gt;&#10;  &lt;li&gt;Second&lt;/li&gt;&#10;&lt;/ol&gt;">+ list</button>
+            <button class="chip" type="button" data-snippet="&lt;p style=&quot;color: tomato;&quot;&gt;Styled with inline CSS!&lt;/p&gt;">+ color</button>
+            <button class="chip chip-ghost" type="button" id="pg-reset">Reset</button>
+          </div>
+
+          <div class="pg-panes">
+            <div class="pg-pane">
+              <label class="pane-label" for="pg-input">your-page.html</label>
+              <textarea id="pg-input" class="pg-input" spellcheck="false" autocomplete="off"></textarea>
+            </div>
+            <div class="pg-pane">
+              <span class="pane-label pane-label-browser"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>Live preview</span>
+              <!-- sandbox="" means scripts inside the preview can't run (safer) -->
+              <iframe id="pg-preview" class="pg-preview" title="Live preview of your HTML" sandbox=""></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. HTML ELEMENTS ===== -->
+    <section id="tags" class="section section-alt">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">03 · Building blocks</p>
+          <h2>HTML Elements</h2>
+          <p class="lede">An element is an opening tag, some content, and a closing tag.</p>
+        </header>
+
+        <!-- Anatomy of an element -->
+        <div class="anatomy reveal" aria-label="Anatomy of an HTML element">
+          <div class="anat-part"><code class="anat-code c-coral">&lt;p&gt;</code><span>opening tag</span></div>
+          <div class="anat-part"><code class="anat-code anat-content">Hello, world!</code><span>content</span></div>
+          <div class="anat-part"><code class="anat-code c-coral">&lt;/p&gt;</code><span>closing tag</span></div>
+        </div>
+
+        <!-- Tag explorer: pick a tag, see what it does -->
+        <div class="explorer reveal">
+          <div class="tag-picker" role="tablist" aria-label="Pick a tag">
+            <button class="tag-btn is-active" type="button" role="tab" aria-selected="true" data-tag="p">&lt;p&gt;</button>
+            <button class="tag-btn" type="button" role="tab" aria-selected="false" data-tag="ul">&lt;ul&gt;</button>
+            <button class="tag-btn" type="button" role="tab" aria-selected="false" data-tag="nav">&lt;nav&gt;</button>
+          </div>
+
+          <div class="tag-panel" role="tabpanel" aria-live="polite">
+            <div class="tag-info">
+              <h3 id="tag-name">&lt;p&gt; · Paragraph</h3>
+              <p id="tag-def"></p>
+              <p class="mini-label">The code</p>
+              <pre class="code-block"><code id="tag-code"></code></pre>
+            </div>
+            <div class="tag-result">
+              <p class="mini-label">What the browser shows</p>
+              <div id="tag-render" class="render-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. STATIC VS DYNAMIC ===== -->
+    <section id="sites" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">04 · Two kinds of websites</p>
+          <h2>Static vs Dynamic Sites</h2>
+          <p class="lede">Flip the switch to compare how each one serves a page.</p>
+        </header>
+
+        <!-- The toggle switch -->
+        <div class="switch-row reveal">
+          <span class="switch-label is-on" id="lbl-static">Static</span>
+          <button class="switch" type="button" role="switch" aria-checked="false" aria-label="Show dynamic websites">
+            <span class="switch-knob"></span>
+          </button>
+          <span class="switch-label" id="lbl-dynamic">Dynamic</span>
+        </div>
+
+        <!-- Static explanation + diagram -->
+        <div class="site-panel reveal" id="panel-static">
+          <div class="site-text">
+            <h3>Static website</h3>
+            <p>Made of pages written in HTML, CSS, and JavaScript. Every visitor gets the same files.</p>
+            <p class="good-for"><strong>Great for:</strong> portfolios, landing pages, event sites.</p>
+            <p class="fun-fact">Fun fact: the site you're on right now is static.</p>
+          </div>
+          <div class="diagram" aria-label="Diagram: browser asks server, server sends the same ready-made files">
+            <div class="node c-sky"><span class="node-icon">💻</span>Browser</div>
+            <div class="arrow"><span>asks for page</span><span>sends files</span></div>
+            <div class="node c-sun">
+              <span class="node-icon">🗂️</span>Server
+              <span class="files"><code>index.html</code><code>style.css</code><code>script.js</code></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic explanation + diagram (hidden until the switch is flipped) -->
+        <div class="site-panel" id="panel-dynamic" hidden>
+          <div class="site-text">
+            <h3>Dynamic website</h3>
+            <p>Content lives in a database or a backend CMS. The server builds each page from that data.</p>
+            <p class="good-for"><strong>Great for:</strong> online shops, social feeds, school portals.</p>
+            <p class="fun-fact">Your Facebook feed looks different from your friend's. That's dynamic.</p>
+          </div>
+          <div class="diagram" aria-label="Diagram: browser asks server, server reads database, server builds and sends the page">
+            <div class="node c-sky"><span class="node-icon">💻</span>Browser</div>
+            <div class="arrow"><span>asks for page</span><span>builds &amp; sends</span></div>
+            <div class="node c-coral"><span class="node-icon">⚙️</span>Server / CMS</div>
+            <div class="arrow"><span>queries</span><span>returns data</span></div>
+            <div class="node c-mint"><span class="node-icon">🗄️</span>Database</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. DEPLOYMENT ===== -->
+    <section id="deploy" class="section section-alt">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">05 · Going live</p>
+          <h2>Deployment</h2>
+          <p class="lede">Deployment moves your finished code from your laptop to a live server, where real users can use it.</p>
+        </header>
+
+        <!-- Clickable timeline. Buttons are filled in by script.js -->
+        <div class="timeline-wrap reveal">
+          <p class="swipe-hint" aria-hidden="true">swipe →</p>
+          <ol class="timeline" id="timeline"></ol>
+        </div>
+
+        <!-- Details for the selected stage -->
+        <div class="stage-detail reveal" id="stage-detail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== 6. CODING IN THE AI ERA ===== -->
+    <section id="ai-era" class="section section-quote">
+      <div class="container">
+        <p class="eyebrow reveal">06 · Coding in the AI era</p>
+        <blockquote class="pull-quote reveal">
+          <p>AI is a powerful <mark>tool</mark>, not a replacement for fundamental <mark class="mark-alt">logic</mark>.</p>
+        </blockquote>
+        <ul class="quote-chips reveal" aria-label="What you still own">
+          <li>You read the code</li>
+          <li>You check the output</li>
+          <li>You own the logic</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 7. PROPER PROMPTING ===== -->
+    <section id="prompting" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">07 · Talk to AI clearly</p>
+          <h2>Proper Prompting</h2>
+          <p class="lede">A strong prompt has four parts. Here they are, building a navbar.</p>
+        </header>
+
+        <!-- The four key components -->
+        <div class="rctc-grid">
+          <article class="rctc-card c-coral reveal">
+            <p class="rctc-num">01</p>
+            <h3>Role</h3>
+            <p class="rctc-ask">Who should the AI be?</p>
+            <p class="rctc-quote">"Act as a senior frontend developer."</p>
+          </article>
+          <article class="rctc-card c-sky reveal">
+            <p class="rctc-num">02</p>
+            <h3>Context</h3>
+            <p class="rctc-ask">What's the situation?</p>
+            <p class="rctc-quote">"I am building a responsive navigation bar in HTML/CSS."</p>
+          </article>
+          <article class="rctc-card c-mint reveal">
+            <p class="rctc-num">03</p>
+            <h3>Task</h3>
+            <p class="rctc-ask">What exactly should it do?</p>
+            <p class="rctc-quote">"Create a clean layout with a logo on the left and links on the right."</p>
+          </article>
+          <article class="rctc-card c-sun reveal">
+            <p class="rctc-num">04</p>
+            <h3>Constraints</h3>
+            <p class="rctc-ask">What are the rules?</p>
+            <p class="rctc-quote">"Use Flexbox and do not use external libraries."</p>
+          </article>
+        </div>
+
+        <!-- Three tiers of prompting -->
+        <div class="tiers reveal">
+          <h3 class="tiers-title">Three tiers of prompting</h3>
+          <div class="tier-tabs" role="tablist" aria-label="Prompt tiers">
+            <button class="tier-tab is-active" type="button" role="tab" aria-selected="true" data-tier="0">Normal</button>
+            <button class="tier-tab" type="button" role="tab" aria-selected="false" data-tier="1">Good</button>
+            <button class="tier-tab" type="button" role="tab" aria-selected="false" data-tier="2">Best</button>
+          </div>
+          <div class="tier-panel" role="tabpanel" aria-live="polite">
+            <!-- Specificity meter fills up as the prompt gets better -->
+            <div class="meter" aria-hidden="true"><span class="meter-fill" id="meter-fill"></span></div>
+            <p class="tier-desc" id="tier-desc"></p>
+            <pre class="prompt-box" id="tier-example"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. QUIZ GAME ===== -->
+    <section id="quiz" class="section section-alt">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">08 · Game time</p>
+          <h2>Good or Bad Prompt?</h2>
+          <p class="lede">Read the prompt. Make the call. See why.</p>
+        </header>
+
+        <div class="quiz-card reveal" id="quiz-card">
+          <!-- Playing screen -->
+          <div class="quiz-play" id="quiz-play">
+            <div class="quiz-top">
+              <span class="quiz-count" id="quiz-count">1 / 8</span>
+              <span class="quiz-score">Score: <strong id="quiz-score">0</strong></span>
+            </div>
+            <div class="quiz-dots" id="quiz-dots" aria-hidden="true"></div>
+
+            <p class="quiz-tag" id="quiz-tag"></p>
+            <p class="quiz-prompt" id="quiz-prompt"></p>
+
+            <div class="quiz-actions">
+              <button class="btn btn-good" type="button" data-answer="good">👍 GOOD</button>
+              <button class="btn btn-bad" type="button" data-answer="bad">👎 BAD</button>
+            </div>
+
+            <!-- Feedback appears here after answering -->
+            <div class="quiz-feedback" id="quiz-feedback" aria-live="polite" hidden>
+              <p class="fb-verdict" id="fb-verdict"></p>
+              <p class="fb-why" id="fb-why"></p>
+              <p class="fb-better" id="fb-better" hidden></p>
+              <button class="btn btn-primary" type="button" id="quiz-next">Next prompt →</button>
+            </div>
+          </div>
+
+          <!-- Final score screen -->
+          <div class="quiz-end" id="quiz-end" hidden>
+            <p class="end-label">Final score</p>
+            <p class="end-score"><span id="end-score">0</span><small>/8</small></p>
+            <p class="end-msg" id="end-msg"></p>
+            <button class="btn btn-primary" type="button" id="quiz-restart">Play Again ↻</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Gordon College</strong> · Session 2: Modern Coding &amp; AI Acceleration</p>
+      <p>By Caluscos, Aeryun Clay &amp; Caolboy, Raymund Leean</p>
+      <p class="footer-small">Built with plain HTML, CSS &amp; JavaScript. No frameworks.</p>
+    </div>
+  </footer>
+
+  <!-- Load JavaScript last so the HTML above already exists when it runs -->
+  <script src="script.js"></script>
+</body>
+</html>
